@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 import { getDatabase, ref, push, onValue } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
+import { get, set } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseApp);
@@ -83,7 +84,7 @@ const inventory = {
   let currentOrderNumber = 1;  
   
   // Handle form submission
-  document.getElementById("order-form").addEventListener("submit", (e) => {
+  document.getElementById("order-form").addEventListener("submit", async (e) => {
     e.preventDefault();
   
     const model = modelSelect.value;
@@ -122,8 +123,8 @@ const orderData = {
   };
 
   // Store the order in the orders array
-  ordersRef.push(orderData);
-
+  await push(ordersRef, orderData);
+  
   // Reset the form
   document.getElementById("order-form").reset();
 
