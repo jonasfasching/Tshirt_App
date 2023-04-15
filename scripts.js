@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', (event) => {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.database();
 
@@ -176,6 +177,7 @@ function downloadOrdersCSV() {
   });
 }
 
+
 // Add event listener to download button
 document.getElementById('download-csv').addEventListener('click', downloadOrdersCSV);
-  
+})
