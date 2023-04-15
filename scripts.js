@@ -5,7 +5,6 @@ const db = firebaseApp.database();
 const inventory = {
     // Add the inventory data as key-value pairs
     'Grau S': 2,
-    'Grau S': 2,
     'Grau M': 3,
     'Grau L': 3,
     'Grau XL': 2,
