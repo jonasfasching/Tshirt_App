@@ -72,7 +72,7 @@ const inventory = {
   }
 
   // Add an array to store order data
-  const ordersRef = db.ref("orders");
+  const ordersRef = firebase.database().ref("orders");
   let currentOrderNumber = 1;  
   
   // Handle form submission
