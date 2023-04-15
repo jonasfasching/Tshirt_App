@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosmos Kollektiv T-Shirt Orders</title>
+    <style>
+        .kosmos-link {
+          text-decoration: none;
+          color: inherit;
+          transition: color 0.2s ease-in-out;
+        }
+        
+        .kosmos-link:hover {
+          color: #4caf50;
+          text-decoration: underline;
+        }
+      </style>
+    </head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Kosmos Kollektiv T-Shirt Orders</h1>
+    <form id="order-form">
+        <label for="first-name">Vorname</label>
+        <input type="text" id="first-name" required>
+        <br>
+        <label for="last-name">Nachname</label>
+        <input type="text" id="last-name" required>
+        <br>
+        <label for="street">Strasse</label>
+        <input type="text" id="street" required>
+        <br>
+        <label for="number">Nr</label>
+        <input type="text" id="number" required>
+        <br>
+        <label for="zip">PLZ</label>
+        <input type="text" id="zip" required>
+        <br>
+        <label for="city">Ort</label>
+        <input type="text" id="city" required>
+        <br>
+        <label for="paid">Bezahlt</label>
+        <input type="checkbox" id="paid">
+        <br>
+        <label for="model">Modell</label>
+        <select id="model" required></select>
+        <br>
+        <label for="comment">Kommentar</label>
+        <textarea id="comment"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+	<button id="download-csv">Download CSV</button>
+    <h2>Inventory</h2>
+    <table id="inventory">
+        <thead>
+            <tr>
+                <th>Modell</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <a href="https://kosmoskollektiv.bandcamp.com/merch" target="_blank">
+        <img src="logo.jpg" alt="Kosmos Kollektiv Logo" style="display: block; width: 200px; margin: 40px auto;">
+    </a>
+    <p style="text-align: center; font-size: 18px;"><a href="https://kosmoskollektiv.bandcamp.com/merch" target="_blank" class="kosmos-link">by Kosmos Kollektiv 2023</a></p>
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBEhi8eTyRtWxgLzRUeErfAUSkKxoILi6w",
+  authDomain: "kosmos-tshirt-orders.firebaseapp.com",
+  databaseURL: "https://kosmos-tshirt-orders-default-rtdb.firebaseio.com",
+  projectId: "kosmos-tshirt-orders",
+  storageBucket: "kosmos-tshirt-orders.appspot.com",
+  messagingSenderId: "561969737929",
+  appId: "1:561969737929:web:e5fbd834819ae6fa601d18"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+    <script src="scripts.js"></script>
+</body>
+</html>
