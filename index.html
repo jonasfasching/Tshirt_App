@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kosmos Kollektiv T-Shirt Orders</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         .kosmos-link {
           text-decoration: none;
@@ -15,9 +16,24 @@
           color: #4caf50;
           text-decoration: underline;
         }
-      </style>
-    </head>
-    <link rel="stylesheet" href="styles.css">
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBEhi8eTyRtWxgLzRUeErfAUSkKxoILi6w",
+            authDomain: "kosmos-tshirt-orders.firebaseapp.com",
+            databaseURL: "https://kosmos-tshirt-orders-default-rtdb.firebaseio.com",
+            projectId: "kosmos-tshirt-orders",
+            storageBucket: "kosmos-tshirt-orders.appspot.com",
+            messagingSenderId: "561969737929",
+            appId: "1:561969737929:web:e5fbd834819ae6fa601d18"
+        };
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="scripts.js"></script>
 </head>
 <body>
     <h1>Kosmos Kollektiv T-Shirt Orders</h1>
@@ -66,22 +82,6 @@
         <img src="logo.jpg" alt="Kosmos Kollektiv Logo" style="display: block; width: 200px; margin: 40px auto;">
     </a>
     <p style="text-align: center; font-size: 18px;"><a href="https://kosmoskollektiv.bandcamp.com/merch" target="_blank" class="kosmos-link">by Kosmos Kollektiv 2023</a></p>
-    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBEhi8eTyRtWxgLzRUeErfAUSkKxoILi6w",
-    authDomain: "kosmos-tshirt-orders.firebaseapp.com",
-    databaseURL: "https://kosmos-tshirt-orders-default-rtdb.firebaseio.com",
-    projectId: "kosmos-tshirt-orders",
-    storageBucket: "kosmos-tshirt-orders.appspot.com",
-    messagingSenderId: "561969737929",
-    appId: "1:561969737929:web:e5fbd834819ae6fa601d18"
-  };
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
     <script src="scripts.js"></script>
 </body>
 </html>
