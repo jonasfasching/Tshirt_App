@@ -79,7 +79,7 @@ const inventory = {
   }
 
   // Add an array to store order data
-  const ordersRef = firebase.database().ref("orders");
+  const ordersRef = ref(db, "orders");
   let currentOrderNumber = 1;  
   
   // Handle form submission
@@ -132,57 +132,55 @@ const orderData = {
 });
 
 // Function to download orders as CSV
-function downloadOrdersCSV() {
-  ordersRef.once("value", (snapshot) => {
-    const orders = snapshot.val();
-    const csvRows = [];
-    const header = [
-      "Order Nr.",
-      "Vorname",
-      "Nachname",
-      "Strasse",
-      "Nr",
-      "PLZ",
-      "Ort",
-      "Bezahlt",
-      "Modell",
-      "Kommentar",
+async function downloadOrdersCSV() {
+  const snapshot = await get(ordersRef);
+  const orders = snapshot.val();
+  const csvRows = [];
+  const header = [
+    "Order Nr.",
+    "Vorname",
+    "Nachname",
+    "Strasse",
+    "Nr",
+    "PLZ",
+    "Ort",
+    "Bezahlt",
+    "Modell",
+    "Kommentar",
+  ];
+  csvRows.push(header.join(","));
+
+  for (const orderKey in orders) {
+    const order = orders[orderKey];
+    const row = [
+      order.orderNumber,
+      order.firstName,
+      order.lastName,
+      order.street,
+      order.number,
+      order.zip,
+      order.city,
+      order.paid,
+      order.model,
+      order.comment,
     ];
-    csvRows.push(header.join(","));
+    csvRows.push(row.join(","));
+  }
 
-    for (const orderKey in orders) {
-      const order = orders[orderKey];
-      const row = [
-        order.orderNumber,
-        order.firstName,
-        order.lastName,
-        order.street,
-        order.number,
-        order.zip,
-        order.city,
-        order.paid,
-        order.model,
-        order.comment,
-      ];
-      csvRows.push(row.join(","));
-    }
-
-    const csvString = csvRows.join("\r\n");
-    const csvBlob = new Blob([csvString], {
-      type: "text/csv;charset=utf-8;",
-    });
-    const link = document.createElement("a");
-    const url = URL.createObjectURL(csvBlob);
-
-    link.setAttribute("href", url);
-    link.setAttribute("download", "orders.csv");
-    link.style.visibility = "hidden";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const csvString = csvRows.join("\r\n");
+  const csvBlob = new Blob([csvString], {
+    type: "text/csv;charset=utf-8;",
   });
-}
+  const link = document.createElement("a");
+  const url = URL.createObjectURL(csvBlob);
 
+  link.setAttribute("href", url);
+  link.setAttribute("download", "orders.csv");
+  link.style.visibility = "hidden";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 // Add event listener to download button
 document.getElementById('download-csv').addEventListener('click', downloadOrdersCSV);
