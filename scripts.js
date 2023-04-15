@@ -1,11 +1,12 @@
-(async () => {
-  const { initializeApp } = await import("https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js");
-  const { getDatabase } = await import("https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js");
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+import { getDatabase, ref, push, onValue } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
 
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const firebaseApp = initializeApp(firebaseConfig);
-    const db = getDatabase(firebaseApp);
-  
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getDatabase(firebaseApp);
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  // The rest of your code...
+});
 
 // Inventory data
 const inventory = {
@@ -185,4 +186,3 @@ function downloadOrdersCSV() {
 
 // Add event listener to download button
 document.getElementById('download-csv').addEventListener('click', downloadOrdersCSV);
-})})
